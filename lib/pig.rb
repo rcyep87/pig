@@ -1,4 +1,5 @@
 require_relative './player'
+require_relative './ScoreTracker'
 
 class Pig
   def initialize
@@ -14,7 +15,9 @@ class Pig
       if input == "q" || input == ""
         return
       else
-        @players.push Player.new(input)
+        x = Player.new(input)
+        @players.push x
+        ScoreTracker.create(name: x.name)
       end
     end
   end
@@ -39,6 +42,7 @@ class Pig
   def winner
     if @players.length == 1
       @players.first
+
     end
   end
 

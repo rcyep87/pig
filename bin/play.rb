@@ -1,5 +1,9 @@
+require 'pry'
+require_relative "../db/setup"
+require_relative '../lib/all'
 require_relative '../lib/pig'
 require_relative '../lib/hog'
+
 
 def select_from(hash)
   loop do
@@ -30,6 +34,7 @@ game = game_class.new
 #      ^ game class is either Pig or Hog. The constant of a class can be assigned to a local variable and be used like any other local variable
 
 game.get_players
+# binding.pry
 
 game.play_round until game.winner
 puts "#{game.winner} wins!"
