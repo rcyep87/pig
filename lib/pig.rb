@@ -43,9 +43,10 @@ class Pig
     if @players.length == 1
       capture = @players.first
       if ScoreTracker.where(name: capture.name)
-        ScoreTracker.create(name: capture.name, wins: 1)
-      else
-        ScoreTracker.find_or_create_by(name: capture.name, wins: 1)
+        winner = ScoreTracker.where(name: capture.name).first
+        winner.wins += 1
+        winner.save
+        winner.name
       end
     end
   end
