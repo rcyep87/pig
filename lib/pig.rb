@@ -4,7 +4,7 @@ require_relative './ScoreTracker'
 class Pig
   def initialize
     @players   = []
-    @max_score = 13
+    @max_score = 7
   end
 
   def get_players
@@ -41,8 +41,8 @@ class Pig
 
   def winner
     if @players.length == 1
-      @players.first
-
+      capture = @players.first
+      ScoreTracker.find_or_create_by(name: capture.name, wins: 1)
     end
   end
 
